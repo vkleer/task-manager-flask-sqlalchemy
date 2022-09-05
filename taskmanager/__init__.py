@@ -14,9 +14,9 @@ if os.environ.get("DEVELOPMENT") == "True":
 else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
-        uri.replace(("postgres://"), "postgresql://", 1)
-    app.config["SQLALCHEMY_DATABASE_URI"] = uri # Heroku
+        uri = uri.replace(("postgres://"), "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = uri  # Heroku
 
 db = SQLAlchemy(app)
 
-from taskmanager import routes # noqa
+from taskmanager import routes  # noqa
